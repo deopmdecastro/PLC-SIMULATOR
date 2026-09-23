@@ -1,0 +1,2 @@
+[functions.tia-bridge]
+verify_jwt = false
