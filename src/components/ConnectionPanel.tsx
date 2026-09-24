@@ -1,16 +1,15 @@
 import { useState } from 'react';
 import { Plug, Copy, Check, ExternalLink, Code } from 'lucide-react';
-import type { ConnectionStatus } from '@/types/plc';
+import type { ConnectionStatus, SimulatorConfig } from '@/types/plc';
 
 interface ConnectionPanelProps {
   connectionStatus: ConnectionStatus;
+  config: SimulatorConfig;
 }
 
-export function ConnectionPanel({ connectionStatus }: ConnectionPanelProps) {
+export function ConnectionPanel({ connectionStatus, config }: ConnectionPanelProps) {
   const [copied, setCopied] = useState<string | null>(null);
-  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string;
-  const bridgeUrl = `${supabaseUrl}/functions/v1/tia-bridge`;
-  const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+  const bridgeUrl = config.bridgeEndpoint || 'http://127.0.0.1:8765';
 
   const copy = (text: string, id: string) => {
     navigator.clipboard.writeText(text);
@@ -25,28 +24,13 @@ export function ConnectionPanel({ connectionStatus }: ConnectionPanelProps) {
     { method: 'GET', path: '/health', desc: 'Health check' },
   ];
 
-  const codeSnippet = `// TIA Portal Bridge - Python example
-// pip install requests
-import requests, json, time
+  const codeSnippet = `# TIA Portal Bridge - local simulator
+python tia_bridge.py --endpoint ${bridgeUrl}
 
-BRIDGE_URL = "${bridgeUrl}"
-HEADERS = {
-    "Authorization": "Bearer ${anonKey}",
-    "Content-Type": "application/json",
-}
-
-# Read PLC state
-resp = requests.get(f"{BRIDGE_URL}/state", headers=HEADERS)
-plc_state = resp.json()
-print(f"CPU RUN: {plc_state.get('run')}")
-print(f"Outputs: {plc_state.get('outputs')}")
-
-# Write to PLC (e.g. press Start)
-requests.put(f"{BRIDGE_URL}/update", headers=HEADERS,
-    json={"start_pressed": True, "source": "tia-portal"})
-time.sleep(0.3)
-requests.put(f"{BRIDGE_URL}/update", headers=HEADERS,
-    json={"start_pressed": False})`;
+# REST example from a TIA script/client:
+# GET  ${bridgeUrl}/state
+# PUT  ${bridgeUrl}/update
+# Body {"source":"tia-portal","tags":{"I0.0":true,"I0.2":true,"I0.3":true,"Q0.0":true,"MW100":1}}`;
 
   return (
     <div className="bg-slate-800 rounded-lg border border-slate-700 p-4">
@@ -121,9 +105,9 @@ requests.put(f"{BRIDGE_URL}/update", headers=HEADERS,
         <div className="flex items-start gap-2 bg-cyan-900/20 border border-cyan-800/50 rounded-lg p-2.5">
           <ExternalLink className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0 mt-0.5" />
           <p className="text-[10px] text-slate-300 leading-relaxed">
-            Use this bridge to connect TIA Portal with the simulator. The S7-PLCSIM or TIA Portal script can
+            Use this local bridge to connect TIA Portal scripts or external test clients with the simulator. The client can
             poll <code className="text-cyan-300">GET /state</code> and push changes via
-            <code className="text-cyan-300"> PUT /update</code>. All changes sync in real-time through Supabase.
+            <code className="text-cyan-300"> PUT /update</code>. Start it with <code className="text-cyan-300">npm run bridge</code>.
           </p>
         </div>
       </div>

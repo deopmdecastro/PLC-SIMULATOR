@@ -1,0 +1,229 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/ProcessAnimation.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=ecbe3388"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.__vite_plugin_react_preamble_installed__) {
+    throw new Error("@vitejs/plugin-react can't detect preamble. Something is wrong. See https://github.com/vitejs/vite-plugin-react/pull/11#discussion_r430879201");
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = (type, id) => {
+    RefreshRuntime.register(type, "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx " + id);
+  };
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import { Factory, Fan, Gauge } from "/node_modules/lucide-react/dist/esm/lucide-react.js?v=ecbe3388";
+export function ProcessAnimation({ state }) {
+  const motorRunning = state.outputs[7];
+  const standby = state.outputs[6];
+  const stopped = state.outputs[5];
+  const autoLed = state.outputs[4];
+  return /* @__PURE__ */ jsxDEV("div", { className: "bg-slate-800 rounded-lg border border-slate-700 p-4", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-2 mb-3", children: [
+      /* @__PURE__ */ jsxDEV(Factory, { className: "w-4 h-4 text-cyan-400" }, void 0, false, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+        lineNumber: 17,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("h3", { className: "text-xs font-bold text-slate-300 uppercase tracking-wide", children: "Process Visualization" }, void 0, false, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+        lineNumber: 18,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+      lineNumber: 16,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "relative bg-gradient-to-b from-slate-900 to-slate-950 rounded-lg p-6 overflow-hidden", style: { height: "280px" }, children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "absolute inset-0 opacity-10", style: {
+        backgroundImage: "linear-gradient(rgba(148, 163, 184, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 163, 184, 0.3) 1px, transparent 1px)",
+        backgroundSize: "20px 20px"
+      } }, void 0, false, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+        lineNumber: 23,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "absolute bottom-12 left-4 right-4 h-8 bg-slate-700 rounded", children: /* @__PURE__ */ jsxDEV("div", { className: "absolute inset-0 flex items-center justify-around", children: [0, 1, 2, 3, 4, 5, 6, 7].map(
+        (i) => /* @__PURE__ */ jsxDEV(
+          "div",
+          {
+            className: `w-5 h-5 rounded-full border-2 transition-all ${motorRunning ? "border-cyan-400 bg-cyan-900/50 animate-spin" : "border-slate-500 bg-slate-800"}`,
+            style: { animationDuration: "0.8s" }
+          },
+          i,
+          false,
+          {
+            fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+            lineNumber: 32,
+            columnNumber: 13
+          },
+          this
+        )
+      ) }, void 0, false, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+        lineNumber: 30,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+        lineNumber: 29,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "absolute bottom-20 left-8 flex flex-col items-center", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: `w-14 h-14 rounded-lg border-2 flex items-center justify-center transition-all ${motorRunning ? "border-emerald-400 bg-emerald-900/30 shadow-lg shadow-emerald-500/30" : standby ? "border-amber-400 bg-amber-900/20" : "border-slate-600 bg-slate-800"}`, children: /* @__PURE__ */ jsxDEV(Fan, { className: `w-7 h-7 transition-all ${motorRunning ? "text-emerald-400 animate-spin" : standby ? "text-amber-400" : "text-slate-500"}` }, void 0, false, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+          lineNumber: 52,
+          columnNumber: 13
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+          lineNumber: 45,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("span", { className: "text-[9px] text-slate-400 mt-1", children: "Motor M1" }, void 0, false, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+          lineNumber: 54,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+        lineNumber: 44,
+        columnNumber: 9
+      }, this),
+      motorRunning && /* @__PURE__ */ jsxDEV("div", { className: "absolute bottom-14 w-6 h-6 bg-cyan-500 rounded shadow-lg shadow-cyan-500/50 animate-conveyor" }, void 0, false, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+        lineNumber: 59,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "absolute top-4 right-4 flex flex-col gap-2", children: [
+        /* @__PURE__ */ jsxDEV(Indicator, { label: "RUN", active: motorRunning, color: "emerald" }, void 0, false, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+          lineNumber: 64,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV(Indicator, { label: "STBY", active: standby, color: "amber" }, void 0, false, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+          lineNumber: 65,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV(Indicator, { label: "STOP", active: stopped, color: "red" }, void 0, false, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+          lineNumber: 66,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV(Indicator, { label: "AUTO", active: autoLed, color: "cyan" }, void 0, false, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+          lineNumber: 67,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+        lineNumber: 63,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "absolute top-4 left-4", children: /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-2 bg-slate-900/80 rounded-lg px-3 py-2 border border-slate-700", children: [
+        /* @__PURE__ */ jsxDEV(Gauge, { className: `w-5 h-5 ${motorRunning ? "text-emerald-400" : "text-slate-500"}` }, void 0, false, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+          lineNumber: 73,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "text-[9px] text-slate-400", children: "SPEED" }, void 0, false, {
+            fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+            lineNumber: 75,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "text-sm font-mono font-bold text-white", children: [
+            motorRunning ? "1450" : "0",
+            " ",
+            /* @__PURE__ */ jsxDEV("span", { className: "text-[9px] text-slate-400", children: "RPM" }, void 0, false, {
+              fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+              lineNumber: 77,
+              columnNumber: 47
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+            lineNumber: 76,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+          lineNumber: 74,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+        lineNumber: 72,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+        lineNumber: 71,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "absolute bottom-2 left-4 right-4 text-center", children: /* @__PURE__ */ jsxDEV("span", { className: `text-xs font-bold tracking-wide ${motorRunning ? "text-emerald-400" : standby ? "text-amber-400" : "text-red-400"}`, children: motorRunning ? ">>> MOTOR RUNNING <<< PRODUCTION ACTIVE" : standby ? "--- STANDBY --- AWAITING START" : "### STOPPED ### MOTOR OFF" }, void 0, false, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+        lineNumber: 85,
+        columnNumber: 11
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+        lineNumber: 84,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+      lineNumber: 21,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+    lineNumber: 15,
+    columnNumber: 5
+  }, this);
+}
+_c = ProcessAnimation;
+function Indicator({ label, active, color }) {
+  const colorMap = {
+    emerald: "bg-emerald-500 shadow-emerald-500/50 text-emerald-400",
+    amber: "bg-amber-500 shadow-amber-500/50 text-amber-400",
+    red: "bg-red-500 shadow-red-500/50 text-red-400",
+    cyan: "bg-cyan-500 shadow-cyan-500/50 text-cyan-400"
+  };
+  const c = colorMap[color];
+  return /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-1.5 bg-slate-900/80 rounded px-2 py-1 border border-slate-700", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: `w-2 h-2 rounded-full transition-all ${active ? c.split(" ")[0] + " " + c.split(" ")[1] : "bg-slate-700"}` }, void 0, false, {
+      fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+      lineNumber: 106,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("span", { className: `text-[9px] font-semibold ${active ? c.split(" ")[2] : "text-slate-500"}`, children: label }, void 0, false, {
+      fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+      lineNumber: 107,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx",
+    lineNumber: 105,
+    columnNumber: 5
+  }, this);
+}
+_c2 = Indicator;
+var _c, _c2;
+$RefreshReg$(_c, "ProcessAnimation");
+$RefreshReg$(_c2, "Indicator");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/ProcessAnimation.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6IkFBZ0JRO0FBaEJSLDJCQUF1QkE7QUFBYSxNQUFjO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQU8zQyxnQkFBU0MsaUJBQWlCLEVBQUVDLE1BQTZCLEdBQUc7QUFDakUsUUFBTUMsZUFBZUQsTUFBTUUsUUFBUSxDQUFDO0FBQ3BDLFFBQU1DLFVBQVVILE1BQU1FLFFBQVEsQ0FBQztBQUMvQixRQUFNRSxVQUFVSixNQUFNRSxRQUFRLENBQUM7QUFDL0IsUUFBTUcsVUFBVUwsTUFBTUUsUUFBUSxDQUFDO0FBRS9CLFNBQ0UsdUJBQUMsU0FBSSxXQUFVLHVEQUNiO0FBQUEsMkJBQUMsU0FBSSxXQUFVLGdDQUNiO0FBQUEsNkJBQUMsV0FBUSxXQUFVLDJCQUFuQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBQTBDO0FBQUEsTUFDMUMsdUJBQUMsUUFBRyxXQUFVLDREQUEyRCxxQ0FBekU7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUE4RjtBQUFBLFNBRmhHO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FHQTtBQUFBLElBRUEsdUJBQUMsU0FBSSxXQUFVLHdGQUF1RixPQUFPLEVBQUVJLFFBQVEsUUFBUSxHQUU3SDtBQUFBLDZCQUFDLFNBQUksV0FBVSwrQkFBOEIsT0FBTztBQUFBLFFBQ2xEQyxpQkFBaUI7QUFBQSxRQUNqQkMsZ0JBQWdCO0FBQUEsTUFDbEIsS0FIQTtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBR0U7QUFBQSxNQUdGLHVCQUFDLFNBQUksV0FBVSw4REFDYixpQ0FBQyxTQUFJLFdBQVUscURBQ1osV0FBQyxHQUFHLEdBQUcsR0FBRyxHQUFHLEdBQUcsR0FBRyxHQUFHLENBQUMsRUFBRUM7QUFBQUEsUUFBSSxDQUFDQyxNQUM3QjtBQUFBLFVBQUM7QUFBQTtBQUFBLFlBRUMsV0FBVyxnREFDVFQsZUFBZSxnREFBZ0QsK0JBQStCO0FBQUEsWUFFaEcsT0FBTyxFQUFFVSxtQkFBbUIsT0FBTztBQUFBO0FBQUEsVUFKOUJEO0FBQUFBLFVBRFA7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxRQUt1QztBQUFBLE1BRXhDLEtBVEg7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQVVBLEtBWEY7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQVlBO0FBQUEsTUFHQSx1QkFBQyxTQUFJLFdBQVUsd0RBQ2I7QUFBQSwrQkFBQyxTQUFJLFdBQVcsaUZBQ2RULGVBQ0kseUVBQ0FFLFVBQ0UscUNBQ0EsK0JBQStCLElBRXJDLGlDQUFDLE9BQUksV0FBVywwQkFBMEJGLGVBQWUsa0NBQWtDRSxVQUFVLG1CQUFtQixnQkFBZ0IsTUFBeEk7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUEySSxLQVA3STtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBUUE7QUFBQSxRQUNBLHVCQUFDLFVBQUssV0FBVSxrQ0FBaUMsd0JBQWpEO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFBeUQ7QUFBQSxXQVYzRDtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBV0E7QUFBQSxNQUdDRixnQkFDQyx1QkFBQyxTQUFJLFdBQVUsa0dBQWY7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUE2RztBQUFBLE1BSS9HLHVCQUFDLFNBQUksV0FBVSw4Q0FDYjtBQUFBLCtCQUFDLGFBQVUsT0FBTSxPQUFNLFFBQVFBLGNBQWMsT0FBTSxhQUFuRDtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBQTREO0FBQUEsUUFDNUQsdUJBQUMsYUFBVSxPQUFNLFFBQU8sUUFBUUUsU0FBUyxPQUFNLFdBQS9DO0FBQUE7QUFBQTtBQUFBO0FBQUEsZUFBc0Q7QUFBQSxRQUN0RCx1QkFBQyxhQUFVLE9BQU0sUUFBTyxRQUFRQyxTQUFTLE9BQU0sU0FBL0M7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUFvRDtBQUFBLFFBQ3BELHVCQUFDLGFBQVUsT0FBTSxRQUFPLFFBQVFDLFNBQVMsT0FBTSxVQUEvQztBQUFBO0FBQUE7QUFBQTtBQUFBLGVBQXFEO0FBQUEsV0FKdkQ7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUtBO0FBQUEsTUFHQSx1QkFBQyxTQUFJLFdBQVUseUJBQ2IsaUNBQUMsU0FBSSxXQUFVLHdGQUNiO0FBQUEsK0JBQUMsU0FBTSxXQUFXLFdBQVdKLGVBQWUscUJBQXFCLGdCQUFnQixNQUFqRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBQW9GO0FBQUEsUUFDcEYsdUJBQUMsU0FDQztBQUFBLGlDQUFDLFNBQUksV0FBVSw2QkFBNEIscUJBQTNDO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQWdEO0FBQUEsVUFDaEQsdUJBQUMsU0FBSSxXQUFVLDBDQUNaQTtBQUFBQSwyQkFBZSxTQUFTO0FBQUEsWUFBSTtBQUFBLFlBQUMsdUJBQUMsVUFBSyxXQUFVLDZCQUE0QixtQkFBNUM7QUFBQTtBQUFBO0FBQUE7QUFBQSxtQkFBK0M7QUFBQSxlQUQvRTtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUVBO0FBQUEsYUFKRjtBQUFBO0FBQUE7QUFBQTtBQUFBLGVBS0E7QUFBQSxXQVBGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFRQSxLQVRGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFVQTtBQUFBLE1BR0EsdUJBQUMsU0FBSSxXQUFVLGdEQUNiLGlDQUFDLFVBQUssV0FBVyxtQ0FDZkEsZUFBZSxxQkFBcUJFLFVBQVUsbUJBQW1CLGNBQWMsSUFFOUVGLHlCQUFlLDRDQUE0Q0UsVUFBVSxtQ0FBbUMsK0JBSDNHO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFJQSxLQUxGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFNQTtBQUFBLFNBckVGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FzRUE7QUFBQSxPQTVFRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBNkVBO0FBRUo7QUFBQ1MsS0F0RmViO0FBd0ZoQixTQUFTYyxVQUFVLEVBQUVDLE9BQU9DLFFBQVFDLE1BQXVGLEdBQUc7QUFDNUgsUUFBTUMsV0FBVztBQUFBLElBQ2ZDLFNBQVM7QUFBQSxJQUNUQyxPQUFPO0FBQUEsSUFDUEMsS0FBSztBQUFBLElBQ0xDLE1BQU07QUFBQSxFQUNSO0FBQ0EsUUFBTUMsSUFBSUwsU0FBU0QsS0FBSztBQUN4QixTQUNFLHVCQUFDLFNBQUksV0FBVSx1RkFDYjtBQUFBLDJCQUFDLFNBQUksV0FBVyx1Q0FBdUNELFNBQVNPLEVBQUVDLE1BQU0sR0FBRyxFQUFFLENBQUMsSUFBSSxNQUFNRCxFQUFFQyxNQUFNLEdBQUcsRUFBRSxDQUFDLElBQUksY0FBYyxNQUF4SDtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBQTJIO0FBQUEsSUFDM0gsdUJBQUMsVUFBSyxXQUFXLDRCQUE0QlIsU0FBU08sRUFBRUMsTUFBTSxHQUFHLEVBQUUsQ0FBQyxJQUFJLGdCQUFnQixJQUFLVCxtQkFBN0Y7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUFtRztBQUFBLE9BRnJHO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FHQTtBQUVKO0FBQUNVLE1BZFFYO0FBQVMsSUFBQUQsSUFBQVk7QUFBQUMsYUFBQWIsSUFBQTtBQUFBYSxhQUFBRCxLQUFBIiwibmFtZXMiOlsiR2F1Z2UiLCJQcm9jZXNzQW5pbWF0aW9uIiwic3RhdGUiLCJtb3RvclJ1bm5pbmciLCJvdXRwdXRzIiwic3RhbmRieSIsInN0b3BwZWQiLCJhdXRvTGVkIiwiaGVpZ2h0IiwiYmFja2dyb3VuZEltYWdlIiwiYmFja2dyb3VuZFNpemUiLCJtYXAiLCJpIiwiYW5pbWF0aW9uRHVyYXRpb24iLCJfYyIsIkluZGljYXRvciIsImxhYmVsIiwiYWN0aXZlIiwiY29sb3IiLCJjb2xvck1hcCIsImVtZXJhbGQiLCJhbWJlciIsInJlZCIsImN5YW4iLCJjIiwic3BsaXQiLCJfYzIiLCIkUmVmcmVzaFJlZyQiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiUHJvY2Vzc0FuaW1hdGlvbi50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgRmFjdG9yeSwgRmFuLCBHYXVnZSB9IGZyb20gJ2x1Y2lkZS1yZWFjdCc7XHJcbmltcG9ydCB0eXBlIHsgUExDU3RhdGUgfSBmcm9tICdAL3R5cGVzL3BsYyc7XHJcblxyXG5pbnRlcmZhY2UgUHJvY2Vzc0FuaW1hdGlvblByb3BzIHtcclxuICBzdGF0ZTogUExDU3RhdGU7XHJcbn1cclxuXHJcbmV4cG9ydCBmdW5jdGlvbiBQcm9jZXNzQW5pbWF0aW9uKHsgc3RhdGUgfTogUHJvY2Vzc0FuaW1hdGlvblByb3BzKSB7XHJcbiAgY29uc3QgbW90b3JSdW5uaW5nID0gc3RhdGUub3V0cHV0c1s3XTsgLy8gUTAuMFxyXG4gIGNvbnN0IHN0YW5kYnkgPSBzdGF0ZS5vdXRwdXRzWzZdOyAvLyBRMC4xXHJcbiAgY29uc3Qgc3RvcHBlZCA9IHN0YXRlLm91dHB1dHNbNV07IC8vIFEwLjJcclxuICBjb25zdCBhdXRvTGVkID0gc3RhdGUub3V0cHV0c1s0XTsgLy8gUTAuM1xyXG5cclxuICByZXR1cm4gKFxyXG4gICAgPGRpdiBjbGFzc05hbWU9XCJiZy1zbGF0ZS04MDAgcm91bmRlZC1sZyBib3JkZXIgYm9yZGVyLXNsYXRlLTcwMCBwLTRcIj5cclxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiBtYi0zXCI+XHJcbiAgICAgICAgPEZhY3RvcnkgY2xhc3NOYW1lPVwidy00IGgtNCB0ZXh0LWN5YW4tNDAwXCIgLz5cclxuICAgICAgICA8aDMgY2xhc3NOYW1lPVwidGV4dC14cyBmb250LWJvbGQgdGV4dC1zbGF0ZS0zMDAgdXBwZXJjYXNlIHRyYWNraW5nLXdpZGVcIj5Qcm9jZXNzIFZpc3VhbGl6YXRpb248L2gzPlxyXG4gICAgICA8L2Rpdj5cclxuXHJcbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwicmVsYXRpdmUgYmctZ3JhZGllbnQtdG8tYiBmcm9tLXNsYXRlLTkwMCB0by1zbGF0ZS05NTAgcm91bmRlZC1sZyBwLTYgb3ZlcmZsb3ctaGlkZGVuXCIgc3R5bGU9e3sgaGVpZ2h0OiAnMjgwcHgnIH19PlxyXG4gICAgICAgIHsvKiBHcmlkIGJhY2tncm91bmQgKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhYnNvbHV0ZSBpbnNldC0wIG9wYWNpdHktMTBcIiBzdHlsZT17e1xyXG4gICAgICAgICAgYmFja2dyb3VuZEltYWdlOiAnbGluZWFyLWdyYWRpZW50KHJnYmEoMTQ4LCAxNjMsIDE4NCwgMC4zKSAxcHgsIHRyYW5zcGFyZW50IDFweCksIGxpbmVhci1ncmFkaWVudCg5MGRlZywgcmdiYSgxNDgsIDE2MywgMTg0LCAwLjMpIDFweCwgdHJhbnNwYXJlbnQgMXB4KScsXHJcbiAgICAgICAgICBiYWNrZ3JvdW5kU2l6ZTogJzIwcHggMjBweCcsXHJcbiAgICAgICAgfX0gLz5cclxuXHJcbiAgICAgICAgey8qIENvbnZleW9yIGJlbHQgKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhYnNvbHV0ZSBib3R0b20tMTIgbGVmdC00IHJpZ2h0LTQgaC04IGJnLXNsYXRlLTcwMCByb3VuZGVkXCI+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImFic29sdXRlIGluc2V0LTAgZmxleCBpdGVtcy1jZW50ZXIganVzdGlmeS1hcm91bmRcIj5cclxuICAgICAgICAgICAge1swLCAxLCAyLCAzLCA0LCA1LCA2LCA3XS5tYXAoKGkpID0+IChcclxuICAgICAgICAgICAgICA8ZGl2XHJcbiAgICAgICAgICAgICAgICBrZXk9e2l9XHJcbiAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2B3LTUgaC01IHJvdW5kZWQtZnVsbCBib3JkZXItMiB0cmFuc2l0aW9uLWFsbCAke1xyXG4gICAgICAgICAgICAgICAgICBtb3RvclJ1bm5pbmcgPyAnYm9yZGVyLWN5YW4tNDAwIGJnLWN5YW4tOTAwLzUwIGFuaW1hdGUtc3BpbicgOiAnYm9yZGVyLXNsYXRlLTUwMCBiZy1zbGF0ZS04MDAnXHJcbiAgICAgICAgICAgICAgICB9YH1cclxuICAgICAgICAgICAgICAgIHN0eWxlPXt7IGFuaW1hdGlvbkR1cmF0aW9uOiAnMC44cycgfX1cclxuICAgICAgICAgICAgICAvPlxyXG4gICAgICAgICAgICApKX1cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICB7LyogTW90b3IgKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhYnNvbHV0ZSBib3R0b20tMjAgbGVmdC04IGZsZXggZmxleC1jb2wgaXRlbXMtY2VudGVyXCI+XHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT17YHctMTQgaC0xNCByb3VuZGVkLWxnIGJvcmRlci0yIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHRyYW5zaXRpb24tYWxsICR7XHJcbiAgICAgICAgICAgIG1vdG9yUnVubmluZ1xyXG4gICAgICAgICAgICAgID8gJ2JvcmRlci1lbWVyYWxkLTQwMCBiZy1lbWVyYWxkLTkwMC8zMCBzaGFkb3ctbGcgc2hhZG93LWVtZXJhbGQtNTAwLzMwJ1xyXG4gICAgICAgICAgICAgIDogc3RhbmRieVxyXG4gICAgICAgICAgICAgICAgPyAnYm9yZGVyLWFtYmVyLTQwMCBiZy1hbWJlci05MDAvMjAnXHJcbiAgICAgICAgICAgICAgICA6ICdib3JkZXItc2xhdGUtNjAwIGJnLXNsYXRlLTgwMCdcclxuICAgICAgICAgIH1gfT5cclxuICAgICAgICAgICAgPEZhbiBjbGFzc05hbWU9e2B3LTcgaC03IHRyYW5zaXRpb24tYWxsICR7bW90b3JSdW5uaW5nID8gJ3RleHQtZW1lcmFsZC00MDAgYW5pbWF0ZS1zcGluJyA6IHN0YW5kYnkgPyAndGV4dC1hbWJlci00MDAnIDogJ3RleHQtc2xhdGUtNTAwJ31gfSAvPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LVs5cHhdIHRleHQtc2xhdGUtNDAwIG10LTFcIj5Nb3RvciBNMTwvc3Bhbj5cclxuICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgey8qIFByb2R1Y3Qgb24gY29udmV5b3IgKi99XHJcbiAgICAgICAge21vdG9yUnVubmluZyAmJiAoXHJcbiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImFic29sdXRlIGJvdHRvbS0xNCB3LTYgaC02IGJnLWN5YW4tNTAwIHJvdW5kZWQgc2hhZG93LWxnIHNoYWRvdy1jeWFuLTUwMC81MCBhbmltYXRlLWNvbnZleW9yXCIgLz5cclxuICAgICAgICApfVxyXG5cclxuICAgICAgICB7LyogQ29udHJvbCBwYW5lbCAqL31cclxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImFic29sdXRlIHRvcC00IHJpZ2h0LTQgZmxleCBmbGV4LWNvbCBnYXAtMlwiPlxyXG4gICAgICAgICAgPEluZGljYXRvciBsYWJlbD1cIlJVTlwiIGFjdGl2ZT17bW90b3JSdW5uaW5nfSBjb2xvcj1cImVtZXJhbGRcIiAvPlxyXG4gICAgICAgICAgPEluZGljYXRvciBsYWJlbD1cIlNUQllcIiBhY3RpdmU9e3N0YW5kYnl9IGNvbG9yPVwiYW1iZXJcIiAvPlxyXG4gICAgICAgICAgPEluZGljYXRvciBsYWJlbD1cIlNUT1BcIiBhY3RpdmU9e3N0b3BwZWR9IGNvbG9yPVwicmVkXCIgLz5cclxuICAgICAgICAgIDxJbmRpY2F0b3IgbGFiZWw9XCJBVVRPXCIgYWN0aXZlPXthdXRvTGVkfSBjb2xvcj1cImN5YW5cIiAvPlxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICB7LyogR2F1Z2UgKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhYnNvbHV0ZSB0b3AtNCBsZWZ0LTRcIj5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTIgYmctc2xhdGUtOTAwLzgwIHJvdW5kZWQtbGcgcHgtMyBweS0yIGJvcmRlciBib3JkZXItc2xhdGUtNzAwXCI+XHJcbiAgICAgICAgICAgIDxHYXVnZSBjbGFzc05hbWU9e2B3LTUgaC01ICR7bW90b3JSdW5uaW5nID8gJ3RleHQtZW1lcmFsZC00MDAnIDogJ3RleHQtc2xhdGUtNTAwJ31gfSAvPlxyXG4gICAgICAgICAgICA8ZGl2PlxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGV4dC1bOXB4XSB0ZXh0LXNsYXRlLTQwMFwiPlNQRUVEPC9kaXY+XHJcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0ZXh0LXNtIGZvbnQtbW9ubyBmb250LWJvbGQgdGV4dC13aGl0ZVwiPlxyXG4gICAgICAgICAgICAgICAge21vdG9yUnVubmluZyA/ICcxNDUwJyA6ICcwJ30gPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1bOXB4XSB0ZXh0LXNsYXRlLTQwMFwiPlJQTTwvc3Bhbj5cclxuICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgey8qIFN0YXR1cyBiYW5uZXIgKi99XHJcbiAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJhYnNvbHV0ZSBib3R0b20tMiBsZWZ0LTQgcmlnaHQtNCB0ZXh0LWNlbnRlclwiPlxyXG4gICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPXtgdGV4dC14cyBmb250LWJvbGQgdHJhY2tpbmctd2lkZSAke1xyXG4gICAgICAgICAgICBtb3RvclJ1bm5pbmcgPyAndGV4dC1lbWVyYWxkLTQwMCcgOiBzdGFuZGJ5ID8gJ3RleHQtYW1iZXItNDAwJyA6ICd0ZXh0LXJlZC00MDAnXHJcbiAgICAgICAgICB9YH0+XHJcbiAgICAgICAgICAgIHttb3RvclJ1bm5pbmcgPyAnPj4+IE1PVE9SIFJVTk5JTkcgPDw8IFBST0RVQ1RJT04gQUNUSVZFJyA6IHN0YW5kYnkgPyAnLS0tIFNUQU5EQlkgLS0tIEFXQUlUSU5HIFNUQVJUJyA6ICcjIyMgU1RPUFBFRCAjIyMgTU9UT1IgT0ZGJ31cclxuICAgICAgICAgIDwvc3Bhbj5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICApO1xyXG59XHJcblxyXG5mdW5jdGlvbiBJbmRpY2F0b3IoeyBsYWJlbCwgYWN0aXZlLCBjb2xvciB9OiB7IGxhYmVsOiBzdHJpbmc7IGFjdGl2ZTogYm9vbGVhbjsgY29sb3I6ICdlbWVyYWxkJyB8ICdhbWJlcicgfCAncmVkJyB8ICdjeWFuJyB9KSB7XHJcbiAgY29uc3QgY29sb3JNYXAgPSB7XHJcbiAgICBlbWVyYWxkOiAnYmctZW1lcmFsZC01MDAgc2hhZG93LWVtZXJhbGQtNTAwLzUwIHRleHQtZW1lcmFsZC00MDAnLFxyXG4gICAgYW1iZXI6ICdiZy1hbWJlci01MDAgc2hhZG93LWFtYmVyLTUwMC81MCB0ZXh0LWFtYmVyLTQwMCcsXHJcbiAgICByZWQ6ICdiZy1yZWQtNTAwIHNoYWRvdy1yZWQtNTAwLzUwIHRleHQtcmVkLTQwMCcsXHJcbiAgICBjeWFuOiAnYmctY3lhbi01MDAgc2hhZG93LWN5YW4tNTAwLzUwIHRleHQtY3lhbi00MDAnLFxyXG4gIH07XHJcbiAgY29uc3QgYyA9IGNvbG9yTWFwW2NvbG9yXTtcclxuICByZXR1cm4gKFxyXG4gICAgPGRpdiBjbGFzc05hbWU9XCJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMS41IGJnLXNsYXRlLTkwMC84MCByb3VuZGVkIHB4LTIgcHktMSBib3JkZXIgYm9yZGVyLXNsYXRlLTcwMFwiPlxyXG4gICAgICA8ZGl2IGNsYXNzTmFtZT17YHctMiBoLTIgcm91bmRlZC1mdWxsIHRyYW5zaXRpb24tYWxsICR7YWN0aXZlID8gYy5zcGxpdCgnICcpWzBdICsgJyAnICsgYy5zcGxpdCgnICcpWzFdIDogJ2JnLXNsYXRlLTcwMCd9YH0gLz5cclxuICAgICAgPHNwYW4gY2xhc3NOYW1lPXtgdGV4dC1bOXB4XSBmb250LXNlbWlib2xkICR7YWN0aXZlID8gYy5zcGxpdCgnICcpWzJdIDogJ3RleHQtc2xhdGUtNTAwJ31gfT57bGFiZWx9PC9zcGFuPlxyXG4gICAgPC9kaXY+XHJcbiAgKTtcclxufVxyXG4iXSwiZmlsZSI6IkM6L1VzZXJzL0Rlb2dyYWNpYSBkZSBDYXN0cm8vRG9jdW1lbnRzL0F1dG9tYXRpb24vRXg2IC0gQ8OzcGlhL1BMQy1TSU1VTEFUT1IvUExDLVNJTVVMQVRPUi9zcmMvY29tcG9uZW50cy9Qcm9jZXNzQW5pbWF0aW9uLnRzeCJ9

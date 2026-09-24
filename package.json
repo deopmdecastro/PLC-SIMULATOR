@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "bridge": "node local_bridge_server.cjs",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",

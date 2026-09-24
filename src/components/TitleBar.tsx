@@ -9,17 +9,17 @@ interface TitleBarProps {
 export function TitleBar({ state, connectionStatus }: TitleBarProps) {
   const connected = connectionStatus === 'connected';
   return (
-    <header className="flex items-center justify-between bg-slate-900 px-6 py-3 border-b border-slate-700">
+    <header className="flex flex-col gap-3 bg-slate-900 px-4 py-3 border-b border-slate-700 sm:flex-row sm:items-center sm:justify-between sm:px-6">
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-2">
           <Cpu className="w-6 h-6 text-cyan-400" />
           <div>
-            <h1 className="text-sm font-bold text-white tracking-wide">S7-1200 PLC SIMULATOR</h1>
+            <h1 className="text-sm font-bold text-white tracking-wide">EX6 PLC SIMULATOR</h1>
             <p className="text-[10px] text-slate-400">Real-time Simulation &middot; TIA Portal Bridge</p>
           </div>
         </div>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">
         <div className="flex items-center gap-2 text-xs">
           <Power className={`w-4 h-4 ${state.run ? 'text-emerald-400' : 'text-red-400'}`} />
           <span className={state.run ? 'text-emerald-400 font-semibold' : 'text-red-400 font-semibold'}>
@@ -28,7 +28,7 @@ export function TitleBar({ state, connectionStatus }: TitleBarProps) {
         </div>
         <div className="flex items-center gap-2 text-xs">
           <Activity className="w-4 h-4 text-cyan-400" />
-          <span className="text-slate-300">Scan: <span className="text-white font-mono font-bold">{state.cycles}</span></span>
+          <span className="text-slate-300">G0: <span className="text-white font-mono font-bold">{state.mw100}</span></span>
         </div>
         <div className="flex items-center gap-2 text-xs">
           {connected ? <Wifi className="w-4 h-4 text-emerald-400" /> : <WifiOff className="w-4 h-4 text-amber-400" />}

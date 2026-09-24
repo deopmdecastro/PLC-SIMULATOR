@@ -1,0 +1,319 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/SimulatorConfigPanel.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=ecbe3388"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.__vite_plugin_react_preamble_installed__) {
+    throw new Error("@vitejs/plugin-react can't detect preamble. Something is wrong. See https://github.com/vitejs/vite-plugin-react/pull/11#discussion_r430879201");
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = (type, id) => {
+    RefreshRuntime.register(type, "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx " + id);
+  };
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import { Link2, RotateCcw, Settings2, Tags, Timer } from "/node_modules/lucide-react/dist/esm/lucide-react.js?v=ecbe3388";
+import { DEFAULT_SIMULATOR_CONFIG } from "/src/types/plc.ts";
+const inputBaseClass = "w-full rounded-md border border-slate-700 bg-slate-950/80 px-2 py-1.5 text-[11px] text-slate-200 outline-none transition focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/60";
+function clampScanInterval(value) {
+  return Math.min(5e3, Math.max(100, value));
+}
+function tagToLabel(tag) {
+  return `${tag.address} ${tag.label}`.trim();
+}
+export function SimulatorConfigPanel({ config, onConfigChange }) {
+  const updateConfig = (patch) => {
+    onConfigChange({ ...config, ...patch });
+  };
+  const updateTag = (group, index, label) => {
+    const nextTags = config[group].map(
+      (tag, tagIndex) => tagIndex === index ? { ...tag, label } : tag
+    );
+    const labelsGroup = group === "inputTags" ? "inputLabels" : "outputLabels";
+    updateConfig({
+      [group]: nextTags,
+      [labelsGroup]: nextTags.map(tagToLabel)
+    });
+  };
+  const renderTagRows = (group, activeCount) => /* @__PURE__ */ jsxDEV("div", { className: "grid max-h-44 grid-cols-1 gap-1.5 overflow-y-auto pr-1 custom-scrollbar sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2", children: config[group].map(
+    (tag, index) => /* @__PURE__ */ jsxDEV("label", { className: "grid grid-cols-[3rem_1fr] items-center gap-2", children: [
+      /* @__PURE__ */ jsxDEV(
+        "span",
+        {
+          className: `font-mono text-[10px] font-bold ${index < activeCount ? "text-cyan-300" : "text-slate-500"}`,
+          children: tag.address
+        },
+        void 0,
+        false,
+        {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+          lineNumber: 43,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ jsxDEV(
+        "input",
+        {
+          value: tag.label,
+          onChange: (event) => updateTag(group, index, event.target.value),
+          className: inputBaseClass,
+          "aria-label": `${tag.address} label`
+        },
+        void 0,
+        false,
+        {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+          lineNumber: 50,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, tag.address, true, {
+      fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+      lineNumber: 42,
+      columnNumber: 5
+    }, this)
+  ) }, void 0, false, {
+    fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+    lineNumber: 40,
+    columnNumber: 3
+  }, this);
+  return /* @__PURE__ */ jsxDEV("section", { className: "rounded-lg border border-slate-700 bg-slate-800 p-4", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "mb-3 flex items-center gap-2", children: [
+      /* @__PURE__ */ jsxDEV(Settings2, { className: "h-4 w-4 text-cyan-400" }, void 0, false, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+        lineNumber: 64,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("h3", { className: "text-xs font-bold uppercase tracking-wide text-slate-300", children: "Simulator Config" }, void 0, false, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+        lineNumber: 65,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(
+        "button",
+        {
+          type: "button",
+          onClick: () => onConfigChange(DEFAULT_SIMULATOR_CONFIG),
+          className: "ml-auto rounded border border-slate-700 bg-slate-900/70 p-1.5 text-slate-400 transition hover:border-cyan-700 hover:text-cyan-300 focus:outline-none focus:ring-1 focus:ring-cyan-500",
+          "aria-label": "Reset simulator configuration",
+          title: "Reset configuration",
+          children: /* @__PURE__ */ jsxDEV(RotateCcw, { className: "h-3.5 w-3.5" }, void 0, false, {
+            fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+            lineNumber: 75,
+            columnNumber: 11
+          }, this)
+        },
+        void 0,
+        false,
+        {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+          lineNumber: 68,
+          columnNumber: 9
+        },
+        this
+      )
+    ] }, void 0, true, {
+      fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+      lineNumber: 63,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "space-y-3", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "grid grid-cols-1 gap-2", children: [
+        /* @__PURE__ */ jsxDEV("label", { className: "space-y-1", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "text-[10px] font-semibold uppercase text-slate-400", children: "Profile" }, void 0, false, {
+            fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+            lineNumber: 82,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              value: config.profileName,
+              onChange: (event) => updateConfig({ profileName: event.target.value }),
+              className: inputBaseClass,
+              "aria-label": "Reusable simulator profile name"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+              lineNumber: 83,
+              columnNumber: 13
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+          lineNumber: 81,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("label", { className: "space-y-1", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "flex items-center gap-1.5 text-[10px] font-semibold uppercase text-slate-400", children: [
+            /* @__PURE__ */ jsxDEV(Link2, { className: "h-3 w-3 text-slate-500" }, void 0, false, {
+              fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+              lineNumber: 93,
+              columnNumber: 15
+            }, this),
+            "Local Bridge"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+            lineNumber: 92,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            "input",
+            {
+              value: config.bridgeEndpoint,
+              onChange: (event) => updateConfig({ bridgeEndpoint: event.target.value }),
+              className: `${inputBaseClass} font-mono`,
+              "aria-label": "Bridge endpoint URL"
+            },
+            void 0,
+            false,
+            {
+              fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+              lineNumber: 96,
+              columnNumber: 13
+            },
+            this
+          )
+        ] }, void 0, true, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+          lineNumber: 91,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("label", { className: "space-y-1", children: [
+          /* @__PURE__ */ jsxDEV("span", { className: "flex items-center gap-1.5 text-[10px] font-semibold uppercase text-slate-400", children: [
+            /* @__PURE__ */ jsxDEV(Timer, { className: "h-3 w-3 text-slate-500" }, void 0, false, {
+              fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+              lineNumber: 106,
+              columnNumber: 15
+            }, this),
+            "Scan Interval"
+          ] }, void 0, true, {
+            fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+            lineNumber: 105,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ jsxDEV(
+              "input",
+              {
+                type: "number",
+                min: 100,
+                max: 5e3,
+                step: 50,
+                value: config.scanIntervalMs,
+                onChange: (event) => updateConfig({ scanIntervalMs: clampScanInterval(Number(event.target.value) || 100) }),
+                className: `${inputBaseClass} font-mono`,
+                "aria-label": "Scan interval in milliseconds"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+                lineNumber: 110,
+                columnNumber: 15
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV("span", { className: "w-8 text-[10px] font-semibold text-slate-500", children: "ms" }, void 0, false, {
+              fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+              lineNumber: 122,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+            lineNumber: 109,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+          lineNumber: 104,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+        lineNumber: 80,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "border-t border-slate-700 pt-3", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "mb-2 flex items-center gap-1.5", children: [
+          /* @__PURE__ */ jsxDEV(Tags, { className: "h-3.5 w-3.5 text-emerald-400" }, void 0, false, {
+            fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+            lineNumber: 129,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: "text-[10px] font-semibold uppercase text-slate-400", children: "Input Tags" }, void 0, false, {
+            fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+            lineNumber: 130,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+          lineNumber: 128,
+          columnNumber: 11
+        }, this),
+        renderTagRows("inputTags", 3)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+        lineNumber: 127,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "border-t border-slate-700 pt-3", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "mb-2 flex items-center gap-1.5", children: [
+          /* @__PURE__ */ jsxDEV(Tags, { className: "h-3.5 w-3.5 text-cyan-400" }, void 0, false, {
+            fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+            lineNumber: 137,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ jsxDEV("span", { className: "text-[10px] font-semibold uppercase text-slate-400", children: "Output Tags" }, void 0, false, {
+            fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+            lineNumber: 138,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+          lineNumber: 136,
+          columnNumber: 11
+        }, this),
+        renderTagRows("outputTags", 4)
+      ] }, void 0, true, {
+        fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+        lineNumber: 135,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+      lineNumber: 79,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx",
+    lineNumber: 62,
+    columnNumber: 5
+  }, this);
+}
+_c = SimulatorConfigPanel;
+var _c;
+$RefreshReg$(_c, "SimulatorConfigPanel");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/Deogracia de Castro/Documents/Automation/Ex6 - Cópia/PLC-SIMULATOR/PLC-SIMULATOR/src/components/SimulatorConfigPanel.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUFBLE1BRUEsdUJBQUMsU0FBSSxXQUFVLGtDQUNiO0FBQUEsK0JBQUMsU0FBSSxXQUFVLGtDQUNiO0FBQUEsaUNBQUMsUUFBSyxXQUFVLCtCQUFoQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQUEyQztBQUFBLFVBQzNDLHVCQUFDLFVBQUssV0FBVSxzREFBcUQsMkJBQXJFO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBQWdGO0FBQUEsYUFGbEY7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQUdBO0FBQUEsUUFDQ0EsY0FBYyxjQUFjLENBQUM7QUFBQSxXQUxoQztBQUFBO0FBQUE7QUFBQTtBQUFBLGFBTUE7QUFBQSxTQTlERjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBK0RBO0FBQUEsT0FoRkY7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQWlGQTtBQUVKO0FBQUNRLEtBMUhlcEI7QUFBb0IsSUFBQW9CO0FBQUFDLGFBQUFELElBQUEiLCJuYW1lcyI6WyJTZXR0aW5nczIiLCJUaW1lciIsIkRFRkFVTFRfU0lNVUxBVE9SX0NPTkZJRyIsImlucHV0QmFzZUNsYXNzIiwiY2xhbXBTY2FuSW50ZXJ2YWwiLCJ2YWx1ZSIsIk1hdGgiLCJtaW4iLCJtYXgiLCJ0YWdUb0xhYmVsIiwidGFnIiwiYWRkcmVzcyIsImxhYmVsIiwidHJpbSIsIlNpbXVsYXRvckNvbmZpZ1BhbmVsIiwiY29uZmlnIiwib25Db25maWdDaGFuZ2UiLCJ1cGRhdGVDb25maWciLCJwYXRjaCIsInVwZGF0ZVRhZyIsImdyb3VwIiwiaW5kZXgiLCJuZXh0VGFncyIsIm1hcCIsInRhZ0luZGV4IiwibGFiZWxzR3JvdXAiLCJyZW5kZXJUYWdSb3dzIiwiYWN0aXZlQ291bnQiLCJldmVudCIsInRhcmdldCIsInByb2ZpbGVOYW1lIiwiYnJpZGdlRW5kcG9pbnQiLCJzY2FuSW50ZXJ2YWxNcyIsIk51bWJlciIsIl9jIiwiJFJlZnJlc2hSZWckIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIlNpbXVsYXRvckNvbmZpZ1BhbmVsLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBMaW5rMiwgUm90YXRlQ2N3LCBTZXR0aW5nczIsIFRhZ3MsIFRpbWVyIH0gZnJvbSAnbHVjaWRlLXJlYWN0JztcbmltcG9ydCB7IERFRkFVTFRfU0lNVUxBVE9SX0NPTkZJRyB9IGZyb20gJ0AvdHlwZXMvcGxjJztcbmltcG9ydCB0eXBlIHsgU2ltdWxhdG9yQ29uZmlnIH0gZnJvbSAnQC90eXBlcy9wbGMnO1xuXG5pbnRlcmZhY2UgU2ltdWxhdG9yQ29uZmlnUGFuZWxQcm9wcyB7XG4gIGNvbmZpZzogU2ltdWxhdG9yQ29uZmlnO1xuICBvbkNvbmZpZ0NoYW5nZTogKGNvbmZpZzogU2ltdWxhdG9yQ29uZmlnKSA9PiB2b2lkO1xufVxuXG50eXBlIFRhZ0dyb3VwID0gJ2lucHV0VGFncycgfCAnb3V0cHV0VGFncyc7XG5cbmNvbnN0IGlucHV0QmFzZUNsYXNzID1cbiAgJ3ctZnVsbCByb3VuZGVkLW1kIGJvcmRlciBib3JkZXItc2xhdGUtNzAwIGJnLXNsYXRlLTk1MC84MCBweC0yIHB5LTEuNSB0ZXh0LVsxMXB4XSB0ZXh0LXNsYXRlLTIwMCBvdXRsaW5lLW5vbmUgdHJhbnNpdGlvbiBmb2N1czpib3JkZXItY3lhbi01MDAgZm9jdXM6cmluZy0xIGZvY3VzOnJpbmctY3lhbi01MDAvNjAnO1xuXG5mdW5jdGlvbiBjbGFtcFNjYW5JbnRlcnZhbCh2YWx1ZTogbnVtYmVyKSB7XG4gIHJldHVybiBNYXRoLm1pbig1MDAwLCBNYXRoLm1heCgxMDAsIHZhbHVlKSk7XG59XG5cbmZ1bmN0aW9uIHRhZ1RvTGFiZWwodGFnOiB7IGFkZHJlc3M6IHN0cmluZzsgbGFiZWw6IHN0cmluZyB9KSB7XG4gIHJldHVybiBgJHt0YWcuYWRkcmVzc30gJHt0YWcubGFiZWx9YC50cmltKCk7XG59XG5cbmV4cG9ydCBmdW5jdGlvbiBTaW11bGF0b3JDb25maWdQYW5lbCh7IGNvbmZpZywgb25Db25maWdDaGFuZ2UgfTogU2ltdWxhdG9yQ29uZmlnUGFuZWxQcm9wcykge1xuICBjb25zdCB1cGRhdGVDb25maWcgPSAocGF0Y2g6IFBhcnRpYWw8U2ltdWxhdG9yQ29uZmlnPikgPT4ge1xuICAgIG9uQ29uZmlnQ2hhbmdlKHsgLi4uY29uZmlnLCAuLi5wYXRjaCB9KTtcbiAgfTtcblxuICBjb25zdCB1cGRhdGVUYWcgPSAoZ3JvdXA6IFRhZ0dyb3VwLCBpbmRleDogbnVtYmVyLCBsYWJlbDogc3RyaW5nKSA9PiB7XG4gICAgY29uc3QgbmV4dFRhZ3MgPSBjb25maWdbZ3JvdXBdLm1hcCgodGFnLCB0YWdJbmRleCkgPT5cbiAgICAgIHRhZ0luZGV4ID09PSBpbmRleCA/IHsgLi4udGFnLCBsYWJlbCB9IDogdGFnLFxuICAgICk7XG4gICAgY29uc3QgbGFiZWxzR3JvdXAgPSBncm91cCA9PT0gJ2lucHV0VGFncycgPyAnaW5wdXRMYWJlbHMnIDogJ291dHB1dExhYmVscyc7XG4gICAgdXBkYXRlQ29uZmlnKHtcbiAgICAgIFtncm91cF06IG5leHRUYWdzLFxuICAgICAgW2xhYmVsc0dyb3VwXTogbmV4dFRhZ3MubWFwKHRhZ1RvTGFiZWwpLFxuICAgIH0gYXMgUGFydGlhbDxTaW11bGF0b3JDb25maWc+KTtcbiAgfTtcblxuICBjb25zdCByZW5kZXJUYWdSb3dzID0gKGdyb3VwOiBUYWdHcm91cCwgYWN0aXZlQ291bnQ6IG51bWJlcikgPT4gKFxuICAgIDxkaXYgY2xhc3NOYW1lPVwiZ3JpZCBtYXgtaC00NCBncmlkLWNvbHMtMSBnYXAtMS41IG92ZXJmbG93LXktYXV0byBwci0xIGN1c3RvbS1zY3JvbGxiYXIgc206Z3JpZC1jb2xzLTIgbGc6Z3JpZC1jb2xzLTEgeGw6Z3JpZC1jb2xzLTJcIj5cbiAgICAgIHtjb25maWdbZ3JvdXBdLm1hcCgodGFnLCBpbmRleCkgPT4gKFxuICAgICAgICA8bGFiZWwga2V5PXt0YWcuYWRkcmVzc30gY2xhc3NOYW1lPVwiZ3JpZCBncmlkLWNvbHMtWzNyZW1fMWZyXSBpdGVtcy1jZW50ZXIgZ2FwLTJcIj5cbiAgICAgICAgICA8c3BhblxuICAgICAgICAgICAgY2xhc3NOYW1lPXtgZm9udC1tb25vIHRleHQtWzEwcHhdIGZvbnQtYm9sZCAke1xuICAgICAgICAgICAgICBpbmRleCA8IGFjdGl2ZUNvdW50ID8gJ3RleHQtY3lhbi0zMDAnIDogJ3RleHQtc2xhdGUtNTAwJ1xuICAgICAgICAgICAgfWB9XG4gICAgICAgICAgPlxuICAgICAgICAgICAge3RhZy5hZGRyZXNzfVxuICAgICAgICAgIDwvc3Bhbj5cbiAgICAgICAgICA8aW5wdXRcbiAgICAgICAgICAgIHZhbHVlPXt0YWcubGFiZWx9XG4gICAgICAgICAgICBvbkNoYW5nZT17KGV2ZW50KSA9PiB1cGRhdGVUYWcoZ3JvdXAsIGluZGV4LCBldmVudC50YXJnZXQudmFsdWUpfVxuICAgICAgICAgICAgY2xhc3NOYW1lPXtpbnB1dEJhc2VDbGFzc31cbiAgICAgICAgICAgIGFyaWEtbGFiZWw9e2Ake3RhZy5hZGRyZXNzfSBsYWJlbGB9XG4gICAgICAgICAgLz5cbiAgICAgICAgPC9sYWJlbD5cbiAgICAgICkpfVxuICAgIDwvZGl2PlxuICApO1xuXG4gIHJldHVybiAoXG4gICAgPHNlY3Rpb24gY2xhc3NOYW1lPVwicm91bmRlZC1sZyBib3JkZXIgYm9yZGVyLXNsYXRlLTcwMCBiZy1zbGF0ZS04MDAgcC00XCI+XG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cIm1iLTMgZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTJcIj5cbiAgICAgICAgPFNldHRpbmdzMiBjbGFzc05hbWU9XCJoLTQgdy00IHRleHQtY3lhbi00MDBcIiAvPlxuICAgICAgICA8aDMgY2xhc3NOYW1lPVwidGV4dC14cyBmb250LWJvbGQgdXBwZXJjYXNlIHRyYWNraW5nLXdpZGUgdGV4dC1zbGF0ZS0zMDBcIj5cbiAgICAgICAgICBTaW11bGF0b3IgQ29uZmlnXG4gICAgICAgIDwvaDM+XG4gICAgICAgIDxidXR0b25cbiAgICAgICAgICB0eXBlPVwiYnV0dG9uXCJcbiAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBvbkNvbmZpZ0NoYW5nZShERUZBVUxUX1NJTVVMQVRPUl9DT05GSUcpfVxuICAgICAgICAgIGNsYXNzTmFtZT1cIm1sLWF1dG8gcm91bmRlZCBib3JkZXIgYm9yZGVyLXNsYXRlLTcwMCBiZy1zbGF0ZS05MDAvNzAgcC0xLjUgdGV4dC1zbGF0ZS00MDAgdHJhbnNpdGlvbiBob3Zlcjpib3JkZXItY3lhbi03MDAgaG92ZXI6dGV4dC1jeWFuLTMwMCBmb2N1czpvdXRsaW5lLW5vbmUgZm9jdXM6cmluZy0xIGZvY3VzOnJpbmctY3lhbi01MDBcIlxuICAgICAgICAgIGFyaWEtbGFiZWw9XCJSZXNldCBzaW11bGF0b3IgY29uZmlndXJhdGlvblwiXG4gICAgICAgICAgdGl0bGU9XCJSZXNldCBjb25maWd1cmF0aW9uXCJcbiAgICAgICAgPlxuICAgICAgICAgIDxSb3RhdGVDY3cgY2xhc3NOYW1lPVwiaC0zLjUgdy0zLjVcIiAvPlxuICAgICAgICA8L2J1dHRvbj5cbiAgICAgIDwvZGl2PlxuXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cInNwYWNlLXktM1wiPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImdyaWQgZ3JpZC1jb2xzLTEgZ2FwLTJcIj5cbiAgICAgICAgICA8bGFiZWwgY2xhc3NOYW1lPVwic3BhY2UteS0xXCI+XG4gICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJ0ZXh0LVsxMHB4XSBmb250LXNlbWlib2xkIHVwcGVyY2FzZSB0ZXh0LXNsYXRlLTQwMFwiPlByb2ZpbGU8L3NwYW4+XG4gICAgICAgICAgICA8aW5wdXRcbiAgICAgICAgICAgICAgdmFsdWU9e2NvbmZpZy5wcm9maWxlTmFtZX1cbiAgICAgICAgICAgICAgb25DaGFuZ2U9eyhldmVudCkgPT4gdXBkYXRlQ29uZmlnKHsgcHJvZmlsZU5hbWU6IGV2ZW50LnRhcmdldC52YWx1ZSB9KX1cbiAgICAgICAgICAgICAgY2xhc3NOYW1lPXtpbnB1dEJhc2VDbGFzc31cbiAgICAgICAgICAgICAgYXJpYS1sYWJlbD1cIlJldXNhYmxlIHNpbXVsYXRvciBwcm9maWxlIG5hbWVcIlxuICAgICAgICAgICAgLz5cbiAgICAgICAgICA8L2xhYmVsPlxuXG4gICAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cInNwYWNlLXktMVwiPlxuICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwiZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTEuNSB0ZXh0LVsxMHB4XSBmb250LXNlbWlib2xkIHVwcGVyY2FzZSB0ZXh0LXNsYXRlLTQwMFwiPlxuICAgICAgICAgICAgICA8TGluazIgY2xhc3NOYW1lPVwiaC0zIHctMyB0ZXh0LXNsYXRlLTUwMFwiIC8+XG4gICAgICAgICAgICAgIExvY2FsIEJyaWRnZVxuICAgICAgICAgICAgPC9zcGFuPlxuICAgICAgICAgICAgPGlucHV0XG4gICAgICAgICAgICAgIHZhbHVlPXtjb25maWcuYnJpZGdlRW5kcG9pbnR9XG4gICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZXZlbnQpID0+IHVwZGF0ZUNvbmZpZyh7IGJyaWRnZUVuZHBvaW50OiBldmVudC50YXJnZXQudmFsdWUgfSl9XG4gICAgICAgICAgICAgIGNsYXNzTmFtZT17YCR7aW5wdXRCYXNlQ2xhc3N9IGZvbnQtbW9ub2B9XG4gICAgICAgICAgICAgIGFyaWEtbGFiZWw9XCJCcmlkZ2UgZW5kcG9pbnQgVVJMXCJcbiAgICAgICAgICAgIC8+XG4gICAgICAgICAgPC9sYWJlbD5cblxuICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9XCJzcGFjZS15LTFcIj5cbiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0xLjUgdGV4dC1bMTBweF0gZm9udC1zZW1pYm9sZCB1cHBlcmNhc2UgdGV4dC1zbGF0ZS00MDBcIj5cbiAgICAgICAgICAgICAgPFRpbWVyIGNsYXNzTmFtZT1cImgtMyB3LTMgdGV4dC1zbGF0ZS01MDBcIiAvPlxuICAgICAgICAgICAgICBTY2FuIEludGVydmFsXG4gICAgICAgICAgICA8L3NwYW4+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImZsZXggaXRlbXMtY2VudGVyIGdhcC0yXCI+XG4gICAgICAgICAgICAgIDxpbnB1dFxuICAgICAgICAgICAgICAgIHR5cGU9XCJudW1iZXJcIlxuICAgICAgICAgICAgICAgIG1pbj17MTAwfVxuICAgICAgICAgICAgICAgIG1heD17NTAwMH1cbiAgICAgICAgICAgICAgICBzdGVwPXs1MH1cbiAgICAgICAgICAgICAgICB2YWx1ZT17Y29uZmlnLnNjYW5JbnRlcnZhbE1zfVxuICAgICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZXZlbnQpID0+XG4gICAgICAgICAgICAgICAgICB1cGRhdGVDb25maWcoeyBzY2FuSW50ZXJ2YWxNczogY2xhbXBTY2FuSW50ZXJ2YWwoTnVtYmVyKGV2ZW50LnRhcmdldC52YWx1ZSkgfHwgMTAwKSB9KVxuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2Ake2lucHV0QmFzZUNsYXNzfSBmb250LW1vbm9gfVxuICAgICAgICAgICAgICAgIGFyaWEtbGFiZWw9XCJTY2FuIGludGVydmFsIGluIG1pbGxpc2Vjb25kc1wiXG4gICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInctOCB0ZXh0LVsxMHB4XSBmb250LXNlbWlib2xkIHRleHQtc2xhdGUtNTAwXCI+bXM8L3NwYW4+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICA8L2xhYmVsPlxuICAgICAgICA8L2Rpdj5cblxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJvcmRlci10IGJvcmRlci1zbGF0ZS03MDAgcHQtM1wiPlxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwibWItMiBmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMS41XCI+XG4gICAgICAgICAgICA8VGFncyBjbGFzc05hbWU9XCJoLTMuNSB3LTMuNSB0ZXh0LWVtZXJhbGQtNDAwXCIgLz5cbiAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT1cInRleHQtWzEwcHhdIGZvbnQtc2VtaWJvbGQgdXBwZXJjYXNlIHRleHQtc2xhdGUtNDAwXCI+SW5wdXQgVGFnczwvc3Bhbj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICB7cmVuZGVyVGFnUm93cygnaW5wdXRUYWdzJywgMyl9XG4gICAgICAgIDwvZGl2PlxuXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiYm9yZGVyLXQgYm9yZGVyLXNsYXRlLTcwMCBwdC0zXCI+XG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJtYi0yIGZsZXggaXRlbXMtY2VudGVyIGdhcC0xLjVcIj5cbiAgICAgICAgICAgIDxUYWdzIGNsYXNzTmFtZT1cImgtMy41IHctMy41IHRleHQtY3lhbi00MDBcIiAvPlxuICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPVwidGV4dC1bMTBweF0gZm9udC1zZW1pYm9sZCB1cHBlcmNhc2UgdGV4dC1zbGF0ZS00MDBcIj5PdXRwdXQgVGFnczwvc3Bhbj5cbiAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICB7cmVuZGVyVGFnUm93cygnb3V0cHV0VGFncycsIDQpfVxuICAgICAgICA8L2Rpdj5cbiAgICAgIDwvZGl2PlxuICAgIDwvc2VjdGlvbj5cbiAgKTtcbn1cbiJdLCJmaWxlIjoiQzovVXNlcnMvRGVvZ3JhY2lhIGRlIENhc3Ryby9Eb2N1bWVudHMvQXV0b21hdGlvbi9FeDYgLSBDw7NwaWEvUExDLVNJTVVMQVRPUi9QTEMtU0lNVUxBVE9SL3NyYy9jb21wb25lbnRzL1NpbXVsYXRvckNvbmZpZ1BhbmVsLnRzeCJ9

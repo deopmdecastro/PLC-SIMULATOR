@@ -21,10 +21,10 @@ export function CPUStatus({ state }: CPUStatusProps) {
         <StatusLED label="FORCE" active={false} color="amber" icon={<AlertTriangle className="w-3 h-3" />} />
       </div>
       <div className="mt-3 pt-3 border-t border-slate-700 space-y-1.5">
-        <DataRow label="Scan Cycle" value={state.cycles.toString()} mono />
-        <DataRow label="MW100" value={state.mw100.toString()} mono />
-        <DataRow label="Mode" value={state.autoMode ? 'AUTO' : 'MANUAL'} />
-        <DataRow label="Latch" value={state.latch ? 'TRUE' : 'FALSE'} highlight={state.latch} />
+        <DataRow label="G0 / MW100" value={state.mw100.toString()} mono />
+        <DataRow label="STOP_NF" value={state.stopNfClosed ? 'TRUE' : 'FALSE'} highlight={state.stopNfClosed} />
+        <DataRow label="FR_NF" value={state.frNfClosed ? 'TRUE' : 'FALSE'} highlight={state.frNfClosed} />
+        <DataRow label="KM1 / KM2" value={`${state.relayK1 ? '1' : '0'} / ${state.relayK2 ? '1' : '0'}`} mono highlight={state.relayK1 || state.relayK2} />
         <DataRow label="Source" value={state.source === 'tia-portal' ? 'TIA PORTAL' : 'SIMULATOR'} />
       </div>
     </div>

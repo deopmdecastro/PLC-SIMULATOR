@@ -6,10 +6,10 @@ interface MemoryPanelProps {
 
 export function MemoryPanel({ state }: MemoryPanelProps) {
   const bits: { key: keyof PLCState['memoryBits']; label: string }[] = [
-    { key: 'M0_0', label: 'M0.0' },
-    { key: 'M0_1', label: 'M0.1' },
-    { key: 'M0_2', label: 'M0.2' },
-    { key: 'M10_0', label: 'M10.0' },
+    { key: 'M0_0', label: 'M0.0 KM1' },
+    { key: 'M0_1', label: 'M0.1 KM2' },
+    { key: 'M0_2', label: 'M0.2 Perm.' },
+    { key: 'M10_0', label: 'M10.0 Pulso' },
   ];
 
   return (
@@ -33,17 +33,17 @@ export function MemoryPanel({ state }: MemoryPanelProps) {
       </div>
       <div className="space-y-1.5">
         <div className="flex items-center justify-between bg-slate-900/50 rounded px-2.5 py-2">
-          <span className="text-xs text-slate-400">MW100</span>
+          <span className="text-xs text-slate-400">G0 / MW100</span>
           <span className="text-sm font-mono font-bold text-white">{state.mw100}</span>
         </div>
         <div className="flex items-center justify-between bg-slate-900/50 rounded px-2.5 py-2">
-          <span className="text-xs text-slate-400">Relay K1</span>
+          <span className="text-xs text-slate-400">KM1</span>
           <span className={`text-sm font-mono font-bold ${state.relayK1 ? 'text-emerald-400' : 'text-slate-500'}`}>
             {state.relayK1 ? 'ON' : 'OFF'}
           </span>
         </div>
         <div className="flex items-center justify-between bg-slate-900/50 rounded px-2.5 py-2">
-          <span className="text-xs text-slate-400">Relay K2</span>
+          <span className="text-xs text-slate-400">KM2</span>
           <span className={`text-sm font-mono font-bold ${state.relayK2 ? 'text-emerald-400' : 'text-slate-500'}`}>
             {state.relayK2 ? 'ON' : 'OFF'}
           </span>

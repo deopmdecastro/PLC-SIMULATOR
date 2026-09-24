@@ -1,0 +1,35 @@
+// Main [OB1] - Ex6
+// Tabela de tags confirmada no TIA Portal:
+//   G0       Int   %MW100
+//   START_D  Bool  %I0.0
+//   START_E  Bool  %I0.1
+//   STOP_NF  Bool  %I0.2
+//   FR_NF    Bool  %I0.3
+//   KM1      Bool  %Q0.0
+//   KM2      Bool  %Q0.1
+
+// Network 1 - START MOTOR GIRA DIREITA
+IF "G0" = 1 AND "STOP_NF" AND "FR_NF" AND "START_D" AND NOT "START_E" THEN
+  "G0" := 5;
+END_IF;
+
+// Network 2 - START MOTOR GIRA ESQUERDA
+IF "G0" = 1 AND "STOP_NF" AND "FR_NF" AND "START_E" AND NOT "START_D" THEN
+  "G0" := 10;
+END_IF;
+
+// Network 3 - STOP do motor direita
+IF "G0" = 5 AND (NOT "FR_NF" OR NOT "STOP_NF") THEN
+  "G0" := 1;
+END_IF;
+
+// Network 4 - STOP do motor esquerda
+IF "G0" = 10 AND (NOT "FR_NF" OR NOT "STOP_NF") THEN
+  "G0" := 1;
+END_IF;
+
+// Network 5 - SAIDA MOTOR DIREITA
+"KM1" := "G0" = 5;
+
+// Network 6 - SAIDA MOTOR ESQUERDA
+"KM2" := "G0" = 10;

@@ -6,10 +6,11 @@ interface ProcessAnimationProps {
 }
 
 export function ProcessAnimation({ state }: ProcessAnimationProps) {
-  const motorRunning = state.outputs[7]; // Q0.0
-  const standby = state.outputs[6]; // Q0.1
-  const stopped = state.outputs[5]; // Q0.2
-  const autoLed = state.outputs[4]; // Q0.3
+  const km1 = state.outputs[7]; // Q0.0
+  const km2 = state.outputs[6]; // Q0.1
+  const motorRunning = km1 || km2;
+  const stopped = !motorRunning;
+  const direction = km1 ? 'DIREITA' : km2 ? 'ESQUERDA' : 'PARADO';
 
   return (
     <div className="bg-slate-800 rounded-lg border border-slate-700 p-4">
@@ -34,7 +35,7 @@ export function ProcessAnimation({ state }: ProcessAnimationProps) {
                 className={`w-5 h-5 rounded-full border-2 transition-all ${
                   motorRunning ? 'border-cyan-400 bg-cyan-900/50 animate-spin' : 'border-slate-500 bg-slate-800'
                 }`}
-                style={{ animationDuration: '0.8s' }}
+                style={{ animationDuration: km2 ? '1.1s' : '0.8s' }}
               />
             ))}
           </div>
@@ -45,13 +46,11 @@ export function ProcessAnimation({ state }: ProcessAnimationProps) {
           <div className={`w-14 h-14 rounded-lg border-2 flex items-center justify-center transition-all ${
             motorRunning
               ? 'border-emerald-400 bg-emerald-900/30 shadow-lg shadow-emerald-500/30'
-              : standby
-                ? 'border-amber-400 bg-amber-900/20'
-                : 'border-slate-600 bg-slate-800'
+              : 'border-slate-600 bg-slate-800'
           }`}>
-            <Fan className={`w-7 h-7 transition-all ${motorRunning ? 'text-emerald-400 animate-spin' : standby ? 'text-amber-400' : 'text-slate-500'}`} />
+            <Fan className={`w-7 h-7 transition-all ${motorRunning ? 'text-emerald-400 animate-spin' : 'text-slate-500'}`} />
           </div>
-          <span className="text-[9px] text-slate-400 mt-1">Motor M1</span>
+          <span className="text-[9px] text-slate-400 mt-1">Motor Ex6</span>
         </div>
 
         {/* Product on conveyor */}
@@ -61,10 +60,10 @@ export function ProcessAnimation({ state }: ProcessAnimationProps) {
 
         {/* Control panel */}
         <div className="absolute top-4 right-4 flex flex-col gap-2">
-          <Indicator label="RUN" active={motorRunning} color="emerald" />
-          <Indicator label="STBY" active={standby} color="amber" />
+          <Indicator label="KM1" active={km1} color="emerald" />
+          <Indicator label="KM2" active={km2} color="cyan" />
           <Indicator label="STOP" active={stopped} color="red" />
-          <Indicator label="AUTO" active={autoLed} color="cyan" />
+          <Indicator label="FR" active={state.frNfClosed} color="amber" />
         </div>
 
         {/* Gauge */}
@@ -83,9 +82,9 @@ export function ProcessAnimation({ state }: ProcessAnimationProps) {
         {/* Status banner */}
         <div className="absolute bottom-2 left-4 right-4 text-center">
           <span className={`text-xs font-bold tracking-wide ${
-            motorRunning ? 'text-emerald-400' : standby ? 'text-amber-400' : 'text-red-400'
+            motorRunning ? 'text-emerald-400' : 'text-red-400'
           }`}>
-            {motorRunning ? '>>> MOTOR RUNNING <<< PRODUCTION ACTIVE' : standby ? '--- STANDBY --- AWAITING START' : '### STOPPED ### MOTOR OFF'}
+            {motorRunning ? `>>> MOTOR ${direction} <<< ${km1 ? 'KM1' : 'KM2'} ACTIVE` : '### STOPPED ### KM1/KM2 OFF'}
           </span>
         </div>
       </div>

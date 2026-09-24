@@ -8,20 +8,24 @@ import { ProcessAnimation } from '@/components/ProcessAnimation';
 import { ConnectionPanel } from '@/components/ConnectionPanel';
 import { EventLog } from '@/components/EventLog';
 import { Legend } from '@/components/Legend';
+import { SimulatorConfigPanel } from '@/components/SimulatorConfigPanel';
 import { usePLCSync } from '@/hooks/usePLCSync';
 
 function App() {
   const {
     state,
+    config: simulatorConfig,
     connectionStatus,
     events,
     toggleRun,
-    toggleAuto,
-    pulseStart,
-    setStop,
+    pulseStartD,
+    pulseStartE,
+    setStopNf,
+    setFrNf,
     resetFaults,
     resetCycles,
-  } = usePLCSync({ scanIntervalMs: 500 });
+    updateConfig,
+  } = usePLCSync();
 
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col">
@@ -30,9 +34,10 @@ function App() {
         state={state}
         connectionStatus={connectionStatus}
         onToggleRun={toggleRun}
-        onToggleAuto={toggleAuto}
-        onPulseStart={pulseStart}
-        onSetStop={setStop}
+        onPulseStartD={pulseStartD}
+        onPulseStartE={pulseStartE}
+        onSetStopNf={setStopNf}
+        onSetFrNf={setFrNf}
         onResetFaults={resetFaults}
         onResetCycles={resetCycles}
       />
@@ -42,7 +47,8 @@ function App() {
           {/* Left column: CPU + Inputs + Memory */}
           <div className="col-span-12 lg:col-span-3 space-y-4">
             <CPUStatus state={state} />
-            <InputPanel state={state} />
+            <SimulatorConfigPanel config={simulatorConfig} onConfigChange={updateConfig} />
+            <InputPanel state={state} tags={simulatorConfig.inputTags} />
             <MemoryPanel state={state} />
           </div>
 
@@ -54,17 +60,17 @@ function App() {
 
           {/* Right column: Outputs + Connection + Event log + Legend */}
           <div className="col-span-12 lg:col-span-3 space-y-4">
-            <OutputPanel state={state} />
-            <ConnectionPanel connectionStatus={connectionStatus} />
+            <OutputPanel state={state} tags={simulatorConfig.outputTags} />
+            <ConnectionPanel connectionStatus={connectionStatus} config={simulatorConfig} />
             <EventLog events={events} />
             <Legend />
           </div>
         </div>
       </main>
 
-      <footer className="bg-slate-900 border-t border-slate-700 px-6 py-2 flex items-center justify-between text-[10px] text-slate-500">
-        <span>S7-1200 PLC Simulator &middot; Real-time TIA Portal Bridge via Supabase</span>
-        <span>Scan: 500ms &middot; Mode: {state.autoMode ? 'AUTO' : 'MANUAL'} &middot; Source: {state.source}</span>
+      <footer className="flex flex-col gap-1 bg-slate-900 border-t border-slate-700 px-4 py-2 text-[10px] text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <span className="min-w-0 break-all">{simulatorConfig.profileName} &middot; Local bridge: {simulatorConfig.bridgeEndpoint}</span>
+        <span className="shrink-0">Scan: {simulatorConfig.scanIntervalMs}ms &middot; KM1: {state.relayK1 ? 'ON' : 'OFF'} &middot; KM2: {state.relayK2 ? 'ON' : 'OFF'} &middot; Source: {state.source}</span>
       </footer>
     </div>
   );
