@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Helper .NET para o SIMATIC S7-PLCSIM Advanced (Windows apenas).
+    Requer a DLL da API da Siemens instalada em:
+      C:\Program Files (x86)\Common Files\Siemens\PLCSIMADV\API\<versão>\
+    Ver README.md deste diretório e docs/TIA_SETUP.md.
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <RootNamespace>PlcSimAdvanced.Helper</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup Condition="Exists('$(PLCSIM_ADV_API_DIR)')">
+    <Reference Include="Siemens.Simatic.Simulation.Runtime">
+      <HintPath>$(PLCSIM_ADV_API_DIR)\Siemens.Simatic.Simulation.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

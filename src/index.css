@@ -19,7 +19,8 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
+    height: 6px;
   }
   .custom-scrollbar::-webkit-scrollbar-track {
     @apply bg-slate-900;
@@ -33,8 +34,108 @@
 }
 
 @keyframes conveyor {
-  0% { left: 4; opacity: 0; }
+  0% { left: 4px; opacity: 0; }
   10% { opacity: 1; }
   90% { opacity: 1; }
   100% { left: calc(100% - 24px); opacity: 0; }
+}
+
+/* ------------------------------------------------------------------ */
+/* Animações do laboratório de simulação 2D                            */
+/* ------------------------------------------------------------------ */
+
+@keyframes lab-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.18; }
+}
+
+@keyframes lab-glow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.6); }
+}
+
+@keyframes lab-sound {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.09); }
+  70% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+
+@keyframes lab-heat {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@keyframes lab-flow {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 -28px; }
+}
+
+@keyframes lab-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes lab-spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes lab-tape {
+  0% { background-position: 0 0; }
+  100% { background-position: -32px 0; }
+}
+
+@keyframes lab-product {
+  0% { transform: translateX(0); opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { transform: translateX(var(--lab-run, 240px)); opacity: 0; }
+}
+
+.lab-blink { animation: lab-blink 0.9s steps(1, end) infinite; }
+.lab-glow { animation: lab-glow 1.6s ease-in-out infinite; }
+.lab-sound { animation: lab-sound 0.7s ease-in-out infinite; }
+.lab-heat { animation: lab-heat 1.1s ease-in-out infinite; }
+.lab-flow { animation: lab-flow 1.4s linear infinite; }
+.lab-spin { animation: lab-spin 1.1s linear infinite; }
+.lab-spin-reverse { animation: lab-spin-reverse 1.1s linear infinite; }
+.lab-tape {
+  background-image: linear-gradient(90deg, rgba(148, 163, 184, 0.45) 0 50%, rgba(15, 23, 42, 0) 50% 100%);
+  background-size: 32px 100%;
+  animation: lab-tape 1.2s linear infinite;
+}
+.lab-product { animation: lab-product 3.2s linear infinite; }
+
+.lab-drop-active {
+  @apply border-cyan-400 bg-cyan-500/10;
+}
+
+/* ------------------------------------------------------------------ */
+/* Slider analógico                                                    */
+/* ------------------------------------------------------------------ */
+
+.lab-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  @apply bg-slate-700;
+}
+.lab-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  @apply bg-cyan-400;
+  cursor: pointer;
+}
+.lab-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 0;
+  border-radius: 9999px;
+  @apply bg-cyan-400;
+  cursor: pointer;
 }

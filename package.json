@@ -1,15 +1,20 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "plc-simulator",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
   "type": "module",
+  "description": "PLC-SIMULATOR — laboratório PLC interativo (HMI/SCADA + simulação 2D) integrado com TIA Portal / PLCSIM",
   "scripts": {
     "dev": "vite",
-    "bridge": "node local_bridge_server.cjs",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit -p tsconfig.app.json"
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "gateway": "node bridge/plc_gateway.cjs",
+    "bridge": "node local_bridge_server.cjs",
+    "tia": "python tia_bridge.py",
+    "test:mock": "node bridge/test_mock.cjs",
+    "verify": "npm run typecheck && npm run lint && npm run test:mock && npm run build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
@@ -32,5 +37,8 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
     "vite": "^5.4.2"
+  },
+  "optionalDependencies": {
+    "nodes7": "^0.3.16"
   }
 }
